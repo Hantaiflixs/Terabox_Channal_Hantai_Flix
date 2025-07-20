@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #3b3bbf, #7e59c9);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
 
+    .container {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    a {
+      color: #ffd700;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .loader {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .loader span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Redirecting to Telegram Channel...</h1>
+    <p>If you are not redirected automatically, <a id="redirectLink" href="https://t.me/LuxeFlix">click here</a>.</p>
+    <p>If the invite link shows expired, please refresh the page until you get a working link.</p>
+    <p>Join at least 2 channels to avoid a Telegram ban.</p>
+    <div class="loader">
+      Redirecting in <span id="countdown">3</span> seconds ⏳
+    </div>
+  </div>
+
+  <script>
+    const redirectURL = "https://t.me/LuxeFlix"; // 🔁 Change to your real Telegram link
+    let seconds = 3;
+
+    const countdownEl = document.getElementById("countdown");
+    const linkEl = document.getElementById("redirectLink");
+    linkEl.href = redirectURL;
+
+    const interval = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        window.location.href = redirectURL;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
